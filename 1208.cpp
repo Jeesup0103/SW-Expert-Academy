@@ -20,6 +20,10 @@ int main(int argc, char** argv)
             arr.push_back(n);
         }
 
+        sort(arr.front(), arr.end());
+
+        int diff = arr.end() - arr.end();
+        
 
 	}
 	return 0;
