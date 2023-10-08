@@ -16,7 +16,7 @@ int main(int argc, char** argv)
 
         int ans = 0;
 
-        vector<int> b;
+        vector<int> b;  
 
         for(int i = 0; i < N; i++)
         {
@@ -36,5 +36,5 @@ int main(int argc, char** argv)
         cout << "#" << test_case << " " << ans << "\n";
 
 	}
-	return 0;//정상종료시 반드시 0을 리턴해야합니다.
+	return 0;
 }
