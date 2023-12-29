@@ -52,6 +52,7 @@ int main(int argc, char** argv)
             // found
             if(current.x == size-1 && current.y == size-1)
             {
+                cout << "#" << test_case<<" "<< current.cost<< "\n";
                 break;
             }
 
@@ -73,7 +74,7 @@ int main(int argc, char** argv)
                 }
             }
         }
-        cout << "#" << test_case<<" "<< current.cost;
+        
 	}
 	return 0;
 }
