@@ -1,7 +1,19 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
+#include <set>
 using namespace std;
+
+int calcShip(int a, int space){
+    int cnt = 0;
+    while(space >= a){
+        cnt++;
+        space -= a;
+        if(space>0)
+            space--;
+    }
+    return cnt;
+}
 
 int main()
 {
@@ -19,40 +31,41 @@ int main()
 	set<int> bomb;
     bomb.insert(0);
     bomb.insert(n+1);
+    int tmp = n;
+    int ogNumShip = 0;
+
+    while(tmp >= a){
+        ogNumShip++;
+        tmp -= a;
+        if(tmp>0)
+            tmp--;
+    }
+
 	for(int i = 0; i < m ;i++){
 		int place;
 		cin >> place;
 		cnt = k;
 
-		bomb.insert(place);
+        auto it = bomb.insert(place).first;
+        auto prev = it, next = it;
+        prev--;
+        next++;
 
-		vector<int>space;
-		space.push_back(bomb[0]-start-1);
-		space.push_back(end-bomb[bomb.size()-1]);
+        int l = *prev;
+        int r = *next;
+        int prevSpace = r - l -1;
+        int prevShip = calcShip(a, prevSpace);
+        int lSpace = place - l -1;
+        int rSpace = r - place - 1;
+        int lShip = calcShip(a, lSpace);
+        int rShip = calcShip(a, rSpace);
 
-        int l = space[0];
-        int r = space[1];
-		for(int j = 0; j < bomb.size(); j++){
-			if(j == bomb.size()-1 || bomb[j+1] - bomb[j] - 1 < a)
-				continue;
-			space.push_back(bomb[j+1] - bomb[j] - 1);
-		}
+        ogNumShip = ogNumShip - prevShip + lShip + rShip;
 
-		for(int j = 0; j < space.size(); j++){
-			int tmp = space[j];
-			while(tmp >= a){
-				cnt--;
-				tmp -= a;
-				if(tmp>0)
-					tmp--;
-			}
-			if(cnt < 0)
-				break;
-		}
-
-		if(cnt > 0){
-			cout << i+1;
-			return 0;
+        
+        if(ogNumShip < k){
+            cout << i+1;
+            return 0;
 		}
 	}
 	cout << "-1";
