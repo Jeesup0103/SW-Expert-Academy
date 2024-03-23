@@ -1,0 +1,14 @@
+{
+  "configurations": [
+    {
+      "name": "C/C++: clang++ 활성 파일 빌드",
+      "type": "lldb",
+      "request": "launch",
+      "program": "/${workspaceFolder}/${fileBasenameNoExtension}",
+      "args": [],
+      "cwd": "${workspaceFolder}",
+      "preLaunchTask": "C/C++: g++ 활성 파일 빌드"
+    }
+  ],
+  "version": "2.0.0"
+}
