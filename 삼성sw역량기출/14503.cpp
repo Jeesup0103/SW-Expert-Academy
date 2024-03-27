@@ -42,7 +42,6 @@ void go(pair<int, int> cur, int dir){
 			go(back, dir);
 		}
 	}
-
 }
 
 int main()
