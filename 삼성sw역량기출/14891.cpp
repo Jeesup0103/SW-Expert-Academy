@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <cmath>
 using namespace std;
 vector<string> gear(4);	
 vector<int> pointer(4, 0);
@@ -57,14 +58,14 @@ void turn(int num, int dir){
 		else{
 			// left geat turn anti-clock
 			if(curTurn == 1){
-				temp[i-1] = (pointer[i+1] + 1) % 8;
+				temp[i-1] = (pointer[i-1] + 1) % 8;
 				curTurn = -1;
 			}
 			else{
-				temp[i-1] = (pointer[i+1] - 1) % 8;
+				temp[i-1] = (pointer[i-1] - 1) % 8;
 				if(temp[i-1]< 0)
 					temp[i-1] += 8;
-				curTurn = -1;
+				curTurn = 1;
 			}
 		}
 	}
@@ -95,7 +96,7 @@ int main()
 	for(int i = 0; i < t; i++){
 		int num, dir;
 		cin >> num >> dir;
-		temp=pointer;
+		temp = pointer;
 		turn(num-1, dir);
 		pointer = temp;
 	}
@@ -109,3 +110,13 @@ int main()
 
 	return 0;
 }
+
+
+/*
+10001011
+10000011
+11010110
+01111010
+5
+4 1
+*/
