@@ -22,8 +22,6 @@ int main()
 	}
 
 	vector<vector<int>> visited(n, vector<int>(n));
-	// bfs로 국경을 여는 애들 1로 만들고 set에 넣어 가면서 총합 더해가면서
-	// queue empty 되면 set에 있는 애들 x,y 가져와서 총합이랑 set.size() 나눠서 x,y에 저장해
 	int cnt = 0;
 	while(1){
 		for(int i = 0; i < n; i++){
