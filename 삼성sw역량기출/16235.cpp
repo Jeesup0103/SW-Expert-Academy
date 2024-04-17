@@ -96,15 +96,11 @@ int main()
 			garden[i][j] = 5;
 		}
 	}
-
-
-
 	for(int i = 0; i < m; i++){
 		int x, y, z;
 		cin >> x >> y >> z;
 		trees[x-1][y-1].push_back(z);
 	}
-
 
 	while(k--){
 		springAndSummer();
